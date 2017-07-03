@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body background='http://i.huffpost.com/gen/1468570/images/o-EUROPE-TRAIN-TRAVEL-facebook.jpg' >
-		
+
 <!--Insert Circle logo -->
 <div class="container">
 	<div class="row">
@@ -13,7 +13,7 @@
 </div>
 
 
-<!-- here on is the Enquiry Card-->		
+<!-- here on is the Enquiry Card-->
 <div class="container">
 	<div class="card-panel yellow lighten-4" id="search-box">
 	<div class="container">
@@ -22,11 +22,14 @@
 			<div class="col s4 offset-s4"><h4>Rail Enquiry</h4></div>
 		</div>
 
+		<!-- Form -->
+        <%= form_tag("/enquiry/query", method: "post") do %>
 		<!-- text input wiith mic-->
 		<div class="row">
 			<div class="card-panel" style="padding: 2%; padding-bottom: 27px;">
 						<div class="col l11 m11 s10">
-							<input id="query" placeholder="fire a query" />
+							<!-- <input id="query" placeholder="fire a query" /> -->
+							<%= text_field_tag(:query)%>
 						</div>
 						<div class="col" style="padding-left: 0;padding-right: 0;">
 							<a href="" onclick="startDictation(event)" id="mic"><img style="padding-bottom: 10px;" src="http://iconshow.me/media/images/ui/ios7-icons/png/128/mic.png" width="29" height="35"></a>
@@ -34,16 +37,20 @@
 			</div>
 		</div>
 
-
 		<div class="row">
 			<div class="col s4 offset-s4">
-				<button class="btn waves-effect waves-light" type="submit" name="action">Get Status</button>
+                <%=submit_tag "fire",class: "btn waves-effect waves-light"%>
 			</div>
 		</div>
+		<% end %>
 	</div>
 	</div>
 </div>
 
+
+<!-- Appending details in a table-->
+<div id="result">
+</div>
 <style>
 #query {
 	height: 1rem;
